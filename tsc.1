@@ -1,0 +1,150 @@
+.TH TSC 1 "March 12, 2014" "tsc Manual"
+.SH NAME
+.PP
+tsc \- TypeScript compiler
+.SH SYNOPSIS
+.PP
+tsc [\f[I]OPTIONS\f[]] [\f[I]sources\f[]]...
+.SH DESCRIPTION
+.PP
+TypeScript is a typed superset of JavaScript that also provide classes,
+modules, and interfaces.
+It compiles to plain ECMAScript 3 or ECMAScript 5 compliant JavaScript.
+.PP
+TypeScript is open source and developed by Microsoft with the motto
+\[aq]Any browser.
+Any host.
+Any OS.\[aq] and can be used in virtually any ECMAScript 3\-capable
+JavaScript host.
+.PP
+One typical host could be Node.js, a popular implementation using the V8
+JavaScript engine.
+Compiling TypeScript for Node is simple:
+.IP
+.nf
+\f[C]
+tsc\ \-t\ ES5\ \-m\ commonjs\ \-\-out\ output.js\ source.ts
+\f[]
+.fi
+.PP
+Here saying we want to have ECMASCript 5 code generated and use the
+CommonJS module format since Node handles both.
+You can also combine multiple input files, which will be concatenated in
+output.js:
+.IP
+.nf
+\f[C]
+tsc\ \-t\ ES5\ \-m\ commonjs\ \-\-out\ output.js\ source1.ts\ source2.ts\ source3.ts
+\f[]
+.fi
+.PP
+Or, if you want to preserve the file structure of your TypeScript
+sources, the following creates three files, \f[B]build/source1.js\f[],
+\f[B]build/source1.js\f[], \f[B]build/source3.js\f[]:
+.IP
+.nf
+\f[C]
+tsc\ \-t\ ES5\ \-m\ commonjs\ \-\-outDir\ build/\ source1.ts\ source2.ts\ source3.ts
+\f[]
+.fi
+.PP
+Finally you can define sources by globbing:
+.IP
+.nf
+\f[C]
+tsc\ \-t\ ES5\ \-m\ commonjs\ \-\-out\ output.js\ src/**/*.ts
+\f[]
+.fi
+.SH OPTIONS
+.TP
+.B \-d, \-\-declaration
+Generates corresponding .d.ts file.
+.RS
+.RE
+.TP
+.B \-h, \-\-help
+Print help message.
+.RS
+.RE
+.TP
+.B \-\-mapRoot \f[I]LOCATION\f[]
+Specifies the location where debugger should locate map files instead of
+generated locations.
+.RS
+.RE
+.TP
+.B \-w, \-\-watch
+Watch input files.
+.RS
+.RE
+.PP
+(compiler support/features)
+.TP
+.B \-v, \-\-version
+Print the compiler\[aq]s version, e.g.
+\f[C]Version\ 0.9.7.0\f[].
+.RS
+.RE
+.TP
+.B \-t, \-\-target \f[I]STRING\f[]
+Specify ECMAScript target version: \f[B]ES3\f[] (default), or
+\f[B]ES5\f[]).
+.RS
+.RE
+.TP
+.B \-m, \-\-module \f[I]STRING\f[]
+Specify module code generation: \f[B]commonjs\f[] or \f[B]amd\f[].
+.RS
+.RE
+.TP
+.B \-\-noImplicitAny
+Warn on expressions and declarations with an implied \f[B]any\f[] type.
+.RS
+.RE
+.TP
+.B \-\-removeComments
+Do not emit comments to output.
+.RS
+.RE
+.TP
+.B \-\-sourcemap
+Generates corresponding .map file.
+.RS
+.RE
+.TP
+.B \-\-sourceRoot \f[I]LOCATION\f[]
+Specifies the location where debugger should locate TypeScript files
+instead of source locations.
+.RS
+.RE
+.PP
+(files)
+.TP
+.B \-\-out \f[I]FILE\f[]
+Concatenate and emit output to single file.
+.RS
+.RE
+.TP
+.B \-\-outDir \f[I]DIRECTORY\f[]
+Redirect output structure to the directory.
+.RS
+.RE
+.SH NOTES ON OPTIONS
+.PP
+Theoretically, code should run with improved characteristics when
+specifying the target version to be ECMAScript 5 although this can be
+completely implementation\-specific.
+.SH SEE ALSO
+.PP
+The TypeScript website for partial documentation and example code can be
+found at <http://www.typescriptlang.org/>.
+.PP
+The TypeScript open source project is hosted on CodePlex at
+<https://typescript.codeplex.com/>.
+.SH DISCLAIMER
+.PP
+This manual was created by user pingrat, <https://pingrat.github.io/>,
+who have zero affiliations with Microsoft or the TypeScript core team.
+Deemed up to date as of TypeScript compiler version 0.9.7.0.
+.SH AUTHORS
+pingrat <http://pingrat.github.io/>.
